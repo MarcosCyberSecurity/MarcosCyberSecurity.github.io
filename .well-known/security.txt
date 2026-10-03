@@ -1,0 +1,5 @@
+Contact: www.linkedin.com/in/marcos-sarti-maldonado
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: es, en, pt
+Canonical: https://marcoscybersecurity.github.io/.well-known/security.txt
+Policy: https://marcoscybersecurity.github.io/#security
