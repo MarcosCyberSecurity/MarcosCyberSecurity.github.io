@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos | IT Operations & Incident Management</title>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   connect-src 'self' https://cve.circl.lu;
+                   img-src 'self' data:;
+                   base-uri 'self';
+                   form-action 'none';
+                   frame-ancestors 'none';">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <title>Marcos | Cybersecurity Specialist</title>
     <style>
         :root {
             --bg: #0a0f1d;
@@ -23,10 +33,7 @@
             padding: 20px;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
 
         header {
             text-align: center;
@@ -69,7 +76,7 @@
             margin-bottom: 30px;
         }
 
-        @media (max-width: 768px) { 
+        @media (max-width: 768px) {
             .grid-main { grid-template-columns: 1fr; }
         }
 
@@ -80,7 +87,13 @@
             padding: 20px;
         }
 
-        .panel h2 { color: var(--green); margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 8px;}
+        .panel h2 {
+            color: var(--green);
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
 
         ul { padding-left: 20px; margin: 10px 0; color: var(--gray); font-size: 0.9rem; }
         li { margin-bottom: 6px; }
@@ -122,10 +135,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
 
-        .result-item a { color: var(--green); text-decoration: none; font-weight: bold; }
-        
+        .result-item a { color: var(--green); text-decoration: none; font-weight: bold; white-space: nowrap; }
+
         .cve-badge {
             background: #ff4a4a;
             color: white;
@@ -150,37 +164,34 @@
 <body>
 
     <div class="container">
-        
+
         <header>
             <h1>[ MARCOS | CYBERSECURITY SPECIALIST ]</h1>
-            <p class="subtitle">IT Operations & Incident Management</p>
+            <p class="subtitle">IT Operations &amp; Incident Management</p>
         </header>
 
-        <!-- RESUMED PROFESSIONAL PROFILE -->
         <div class="bio-card">
-            <strong>👤 Professional Profile:</strong> Technical professional with a solid foundation in offensive/defensive security and over 10 years of international experience resolving critical incidents. Specialized in Linux/Kali Linux (Bash scripting), Cisco networking (TCP/IP), and incident life-cycle management in SOC environments following an intensive advanced technical specialization program at IT Academy - Cibernàrium (Barcelona Activa).
+            <strong>👤 Professional Profile:</strong> Technical professional with a solid foundation in offensive and defensive security, specializing in cybersecurity following an intensive advanced technical training program at IT Academy - Cibernàrium (Barcelona Activa). Expert in Linux/Kali Linux environments (Bash scripting), Cisco network configuration (TCP/IP), and incident life-cycle management. Over 10 years of experience in international environments, recognized for analytical skills in resolving critical incidents and making risk-based decisions.
             <br>
-            <a href="https://linkedin.com" target="_blank" class="linkedin-btn">Connect on LinkedIn ↗</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="linkedin-btn">Connect on LinkedIn ↗</a>
         </div>
 
         <div class="grid-main">
-            
-            <!-- CERTIFICATIONS & TRAINING -->
+
             <div class="panel">
-                <h2>📜 Certifications & Specialized Training</h2>
+                <h2>📜 Certifications &amp; Specialized Training</h2>
                 <ul>
                     <li><strong>CyberOps Cybersecurity Specialization</strong> | Cisco Networking Academy (CCNA Cybersecurity)</li>
                     <li><strong>CCST – IT Support | Networking | Cybersecurity</strong> | Cisco Networking Academy</li>
-                    <li><strong>Network Defense</strong> | Ethical Hacking & Pentesting Badge</li>
+                    <li><strong>Network Defense</strong> | Ethical Hacking &amp; Pentesting Badge</li>
                     <li><strong>Python Backend Development</strong> | Python Institute's PCAP</li>
                     <li><strong>High-Performance Intensive Reskilling Programme</strong> | IT Academy – Cibernàrium (Barcelona Activa)</li>
                 </ul>
             </div>
 
-            <!-- FEATURED LABS / PROJECTS -->
             <div class="panel">
                 <h2>📁 Featured Technical Labs</h2>
-                <p style="color: var(--gray); font-size: 0.85rem; margin-top: 0;">Practical labs focused on core systems infrastructure, threat verification, and live configuration analysis:</p>
+                <p style="color: var(--gray); font-size: 0.85rem; margin-top: 0;">Practical labs on Linux process analysis, Threat Hunting, Cisco networking, and incident management in SOC environments:</p>
                 <ul>
                     <li><strong>LAB-1:</strong> Real-time Process Analysis and Socket Auditing on Linux.</li>
                     <li><strong>LAB-2:</strong> Deploying an Nginx Web Server and Analysing Audit Logs (Baseline).</li>
@@ -190,24 +201,22 @@
                 </div>
             </div>
 
-            <!-- INTERACTIVE OSINT MODULE -->
             <div class="panel">
                 <h2>🔎 Live OSINT Module: Google Dorks</h2>
-                <p style="color: var(--gray); font-size: 0.8rem;">Demonstrating passive reconnaissance automation. Enter a target domain to generate advanced dork queries.</p>
-                
-                <input type="text" id="targetDomain" placeholder="example: targetcompany.com">
-                <button onclick="runOSINT()">Launch Passive Scan</button>
-                
+                <p style="color: var(--gray); font-size: 0.8rem;">Passive reconnaissance automation. Enter a target domain to generate advanced dork queries.</p>
+
+                <input type="text" id="targetDomain" placeholder="example: targetcompany.com" autocomplete="off" spellcheck="false">
+                <button type="button" id="osintBtn">Launch Passive Scan</button>
+
                 <ul id="osintResults" class="results-list">
                     <li style="color: var(--gray); font-size: 0.8rem;">Enter a domain above to test...</li>
                 </ul>
             </div>
 
-            <!-- INTERACTIVE THREAT INTEL MODULE -->
             <div class="panel">
                 <h2>⚠️ Real-Time Threat Feed (CVEs)</h2>
-                <p style="color: var(--gray); font-size: 0.8rem;">Demonstrating external API integration. Latest global vulnerabilities fetched live from an open intelligence feed.</p>
-                
+                <p style="color: var(--gray); font-size: 0.8rem;">External API integration. Latest global vulnerabilities fetched live from CIRCL CVE feed.</p>
+
                 <ul id="cveResults" class="results-list">
                     <li style="color: var(--gray); font-size: 0.8rem;">Fetching threat data...</li>
                 </ul>
@@ -218,45 +227,55 @@
     </div>
 
     <script>
-        // --- OSINT ENGINE ---
+        const DOMAIN_REGEX = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
         function runOSINT() {
-            const domain = document.getElementById('targetDomain').value.trim();
+            const input = document.getElementById('targetDomain');
+            const domain = input.value.trim().toLowerCase();
             const resultsContainer = document.getElementById('osintResults');
             resultsContainer.innerHTML = '';
 
-            if (!domain) {
-                alert('Please enter a valid domain (e.g., company.com)');
+            if (!DOMAIN_REGEX.test(domain)) {
+                resultsContainer.innerHTML = '<li style="color:#ff4a4a; font-size:0.8rem;">Invalid domain. Example: company.com</li>';
                 return;
             }
 
             const dorks = [
-                { name: "Exposed PDF Files", query: `site:${domain} filetype:pdf` },
-                { name: "Admin/Login Panels", query: `site:${domain} inurl:admin OR inurl:login` },
+                { name: "Exposed PDF Files",        query: `site:${domain} filetype:pdf` },
+                { name: "Admin/Login Panels",       query: `site:${domain} inurl:admin OR inurl:login` },
                 { name: "Exposed Database Backups", query: `site:${domain} filetype:sql OR filetype:bak` }
             ];
 
             dorks.forEach(dork => {
                 const li = document.createElement('li');
                 li.className = 'result-item';
-                const googleUrl = `https://google.com{encodeURIComponent(dork.query)}`;
-                
-                li.innerHTML = `
-                    <span>${dork.name}</span>
-                    <a href="${googleUrl}" target="_blank">Test ↗</a>
-                `;
+
+                const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(dork.query)}`;
+
+                const span = document.createElement('span');
+                span.textContent = dork.name;
+
+                const a = document.createElement('a');
+                a.href = googleUrl;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'Test ↗';
+
+                li.appendChild(span);
+                li.appendChild(a);
                 resultsContainer.appendChild(li);
             });
         }
 
-        // --- LIVE THREAT FEED API (CIRCL CVE) ---
-        window.onload = function() {
-            fetchLiveThreats();
-        };
+        document.getElementById('osintBtn').addEventListener('click', runOSINT);
+        document.getElementById('targetDomain').addEventListener('keydown', e => {
+            if (e.key === 'Enter') runOSINT();
+        });
 
         function fetchLiveThreats() {
             const container = document.getElementById('cveResults');
-            
-            fetch('https://circl.lu')
+
+            fetch('https://cve.circl.lu/api/last')
                 .then(response => {
                     if (!response.ok) throw new Error('API connection issue');
                     return response.json();
@@ -264,37 +283,49 @@
                 .then(data => {
                     container.innerHTML = '';
                     const topFour = data.slice(0, 4);
-topFour.forEach(cve => {
-    const li = document.createElement('li');
-    li.className = 'result-item';
 
-    const summary = (cve.summary || 'No summary available').trim();
-    const shortSummary = summary.length > 80
-        ? summary.substring(0, 80) + '...'
-        : summary;
+                    topFour.forEach(cve => {
+                        const li = document.createElement('li');
+                        li.className = 'result-item';
 
-    // Construimos con textContent → inmune a XSS
-    const wrapper = document.createElement('div');
+                        const summary = (cve.summary || 'No summary available').trim();
+                        const shortSummary = summary.length > 80
+                            ? summary.substring(0, 80) + '...'
+                            : summary;
 
-    const badge = document.createElement('span');
-    badge.className = 'cve-badge';
-    badge.textContent = cve.id;
+                        const wrapper = document.createElement('div');
 
-    const p = document.createElement('p');
-    p.style.cssText = 'margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;';
-    p.textContent = shortSummary;
+                        const badge = document.createElement('span');
+                        badge.className = 'cve-badge';
+                        badge.textContent = cve.id;
 
-    wrapper.appendChild(badge);
-    wrapper.appendChild(p);
+                        const p = document.createElement('p');
+                        p.style.cssText = 'margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;';
+                        p.textContent = shortSummary;
 
-    const a = document.createElement('a');
-    a.href = `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(cve.id)}`;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.style.marginLeft = '10px';
-    a.textContent = 'View ↗';
+                        wrapper.appendChild(badge);
+                        wrapper.appendChild(p);
 
-    li.appendChild(wrapper);
-    li.appendChild(a);
-    container.appendChild(li);
-});
+                        const a = document.createElement('a');
+                        a.href = `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(cve.id)}`;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.style.marginLeft = '10px';
+                        a.textContent = 'View ↗';
+
+                        li.appendChild(wrapper);
+                        li.appendChild(a);
+                        container.appendChild(li);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    container.innerHTML = '<li style="color:#ff4a4a; font-size:0.8rem;">⚠️ Threat intelligence feed currently offline.</li>';
+                });
+        }
+
+        window.addEventListener('DOMContentLoaded', fetchLiveThreats);
+    </script>
+
+</body>
+</html>
