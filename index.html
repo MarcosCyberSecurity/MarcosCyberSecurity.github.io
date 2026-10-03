@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junior Cybersecurity Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0f1d;
+            --panel: #121829;
+            --border: #1f2942;
+            --green: #00ff9d;
+            --white: #ffffff;
+            --gray: #8a99ad;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg);
+            color: var(--white);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--green); margin: 0; }
+        .subtitle { color: var(--gray); font-size: 0.9rem; }
+
+        .bio-card {
+            background: var(--panel);
+            border: 1px solid var(--green);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .linkedin-btn {
+            display: inline-block;
+            background: #0077b5;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .linkedin-btn:hover { background: #005a87; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .panel h2 { color: var(--green); margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 5px;}
+
+        input {
+            width: 100%;
+            background: #1a233d;
+            border: 1px solid var(--border);
+            color: var(--green);
+            padding: 10px;
+            font-family: inherit;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            background: var(--green);
+            color: #0a0f1d;
+            border: none;
+            padding: 10px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover { background: #00cc7d; }
+
+        .results-list { list-style: none; padding: 0; margin-top: 15px; }
+        .result-item {
+            background: #1a233d;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--green);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-item a { color: var(--green); text-decoration: none; font-weight: bold; }
+        
+        .cve-badge {
+            background: #ff4a4a;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>[ JUNIOR CYBERSECURITY PORTFOLIO ]</h1>
+            <p class="subtitle">Threat Intelligence API Integration & OSINT Automation</p>
+        </header>
+
+        <!-- BIOGRAPHY & LINKEDIN -->
+        <div class="bio-card">
+            <strong>👤 Technical Profile:</strong> Hello! I am a Junior Cybersecurity student. This static portfolio showcases my ability to build client-side scripts that interact with global threat feeds and automate intelligence gathering without needing backend servers or risk exposing sensitive database assets.
+            <br><br>
+            <!-- REEMPLAZA ESTE ENLACE CON EL TUYO REAL DE LINKEDIN -->
+            <a href="https://linkedin.com" target="_blank" class="linkedin-btn">Connect on LinkedIn ↗</a>
+        </div>
+
+        <div class="grid">
+            
+            <!-- OSINT PANEL -->
+            <div class="panel">
+                <h2>🔎 OSINT Module: Google Dorks</h2>
+                <p style="color: var(--gray); font-size: 0.8rem;">Enter a target domain to generate advanced dork parameters for passive reconnaissance.</p>
+                
+                <input type="text" id="targetDomain" placeholder="example: targetcompany.com">
+                <button onclick="runOSINT()">Launch Passive Scan</button>
+                
+                <ul id="osintResults" class="results-list">
+                    <li style="color: var(--gray); font-size: 0.8rem;">Enter a domain to see the automation...</li>
+                </ul>
+            </div>
+
+            <!-- LIVE THREAT PANEL -->
+            <div class="panel">
+                <h2>⚠️ Real-Time Global Threats (CVEs)</h2>
+                <p style="color: var(--gray); font-size: 0.8rem;">Latest critical vulnerabilities disclosed worldwide, fetched live from an open intelligence feed.</p>
+                
+                <ul id="cveResults" class="results-list">
+                    <li style="color: var(--gray); font-size: 0.8rem;">Fetching threat feeds...</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // --- OSINT ENGINE ---
+        function runOSINT() {
+            const domain = document.getElementById('targetDomain').value.trim();
+            const resultsContainer = document.getElementById('osintResults');
+            resultsContainer.innerHTML = '';
+
+            if (!domain) {
+                alert('Please enter a valid domain (e.g., company.com)');
+                return;
+            }
+
+            const dorks = [
+                { name: "Exposed PDF Files", query: `site:${domain} filetype:pdf` },
+                { name: "Admin/Login Panels", query: `site:${domain} inurl:admin OR inurl:login` },
+                { name: "Exposed Database Backups", query: `site:${domain} filetype:sql OR filetype:bak` }
+            ];
+
+            dorks.forEach(dork => {
+                const li = document.createElement('li');
+                li.className = 'result-item';
+                const googleUrl = `https://google.com{encodeURIComponent(dork.query)}`;
+                
+                li.innerHTML = `
+                    <span>${dork.name}</span>
+                    <a href="${googleUrl}" target="_blank">Test ↗</a>
+                `;
+                resultsContainer.appendChild(li);
+            });
+        }
+
+        // --- LIVE THREAT FEED API ---
+        window.onload = function() {
+            fetchLiveThreats();
+        };
+
+        function fetchLiveThreats() {
+            const container = document.getElementById('cveResults');
+            
+            fetch('https://circl.lu')
+                .then(response => {
+                    if (!response.ok) throw new Error('API network response issue');
+                    return response.json();
+                })
+                .then(data => {
+                    container.innerHTML = '';
+                    const topFive = data.slice(0, 5);
+
+                    topFive.forEach(cve => {
+                        const li = document.createElement('li');
+                        li.className = 'result-item';
+                        const shortSummary = cve.summary.length > 90 
+                            ? cve.summary.substring(0, 90) + '...' 
+                            : cve.summary;
+
+                        li.innerHTML = `
+                            <div>
+                                <span class="cve-badge">${cve.id}</span>
+                                <p style="margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;">${shortSummary}</p>
+                            </div>
+                            <a href="https://nist.gov{cve.id}" target="_blank" style="margin-left: 10px;">View ↗</a>
+                        `;
+                        container.appendChild(li);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    container.innerHTML = '<li style="color: #ff4a4a; font-size: 0.8rem;">⚠️ Threat intelligence feed unavailable.</li>';
+                });
+        }
+    </script>
+</body>
+</html>
