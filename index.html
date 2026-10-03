@@ -264,22 +264,37 @@
                 .then(data => {
                     container.innerHTML = '';
                     const topFour = data.slice(0, 4);
-
-                   topFour.forEach(cve => {
+topFour.forEach(cve => {
     const li = document.createElement('li');
     li.className = 'result-item';
 
-    const shortSummary = cve.summary.length > 80
-        ? cve.summary.substring(0, 80) + '...'
-        : cve.summary;
+    const summary = (cve.summary || 'No summary available').trim();
+    const shortSummary = summary.length > 80
+        ? summary.substring(0, 80) + '...'
+        : summary;
 
-    li.innerHTML = `
-        <div>
-            <span class="cve-badge">${cve.id}</span>
-            <p style="margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;">${shortSummary}</p>
-        </div>
-        <a href="https://nist.gov{cve.id}" target="_blank" style="margin-left: 10px;">View ↗</a>
-    `;
+    // Construimos con textContent → inmune a XSS
+    const wrapper = document.createElement('div');
 
+    const badge = document.createElement('span');
+    badge.className = 'cve-badge';
+    badge.textContent = cve.id;
+
+    const p = document.createElement('p');
+    p.style.cssText = 'margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;';
+    p.textContent = shortSummary;
+
+    wrapper.appendChild(badge);
+    wrapper.appendChild(p);
+
+    const a = document.createElement('a');
+    a.href = `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(cve.id)}`;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.marginLeft = '10px';
+    a.textContent = 'View ↗';
+
+    li.appendChild(wrapper);
+    li.appendChild(a);
     container.appendChild(li);
 });
