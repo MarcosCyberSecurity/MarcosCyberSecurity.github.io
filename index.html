@@ -264,3 +264,25 @@
             
             fetch('https://circl.lu')
                 .then(response => {
+                    if (!response.ok) throw new Error('API connection issue');
+return response.json();
+})
+.then(data => {
+container.innerHTML = '';
+const topFour = data.slice(0, 4); // Tomamos 4 para balancear el diseño
+topFour.forEach(cve => {
+const li = document.createElement('li');
+li.className = 'result-item';
+const shortSummary = cve.summary.length > 80
+? cve.summary.substring(0, 80) + '...'
+: cve.summary;
+li.innerHTML = <div> <span class="cve-badge">${cve.id}</span> <p style="margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;">${shortSummary}</p> </div> <a href="https://nist.gov{cve.id}" target="_blank" style="margin-left: 10px;">View ↗</a>;
+container.appendChild(li);
+});
+})
+.catch(err => {
+console.error(err);
+container.innerHTML = '⚠️ Threat intelligence feed currently offline.';
+});
+}
+
