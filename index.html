@@ -3,17 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self';
-                   script-src 'self' 'unsafe-inline';
-                   style-src 'self' 'unsafe-inline';
-                   connect-src 'self' https://cve.circl.lu;
-                   img-src 'self' data:;
-                   base-uri 'self';
-                   form-action 'none';
-                   frame-ancestors 'none';">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <title>Marcos | IT Operations & Incident Management</title>
+    <title>Junior Cybersecurity Portfolio</title>
     <style>
         :root {
             --bg: #0a0f1d;
@@ -22,7 +12,6 @@
             --green: #00ff9d;
             --white: #ffffff;
             --gray: #8a99ad;
-            --blue-linkedin: #0077b5;
         }
 
         body {
@@ -33,7 +22,10 @@
             padding: 20px;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
         header {
             text-align: center;
@@ -42,43 +34,37 @@
             margin-bottom: 30px;
         }
 
-        h1 { color: var(--green); margin: 0; font-size: 1.8rem; }
-        .subtitle { color: var(--gray); font-size: 0.95rem; margin-top: 5px; }
+        h1 { color: var(--green); margin: 0; }
+        .subtitle { color: var(--gray); font-size: 0.9rem; }
 
         .bio-card {
             background: var(--panel);
             border: 1px solid var(--green);
-            padding: 20px;
+            padding: 15px;
             border-radius: 5px;
             margin-bottom: 30px;
-            line-height: 1.6;
         }
 
         .linkedin-btn {
             display: inline-block;
-            background: var(--blue-linkedin);
+            background: #0077b5;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
             border-radius: 4px;
             font-weight: bold;
-            margin-top: 15px;
-            font-family: sans-serif;
-            font-size: 0.9rem;
+            margin-top: 10px;
         }
 
         .linkedin-btn:hover { background: #005a87; }
 
-        .grid-main {
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 30px;
         }
 
-        @media (max-width: 768px) {
-            .grid-main { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 
         .panel {
             background: var(--panel);
@@ -87,17 +73,7 @@
             padding: 20px;
         }
 
-        .panel h2 {
-            color: var(--green);
-            margin-top: 0;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
-        }
-
-        ul { padding-left: 20px; margin: 10px 0; color: var(--gray); font-size: 0.9rem; }
-        li { margin-bottom: 6px; }
-        strong { color: var(--white); }
+        .panel h2 { color: var(--green); margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 5px;}
 
         input {
             width: 100%;
@@ -135,11 +111,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
         }
 
-        .result-item a { color: var(--green); text-decoration: none; font-weight: bold; white-space: nowrap; }
-
+        .result-item a { color: var(--green); text-decoration: none; font-weight: bold; }
+        
         .cve-badge {
             background: #ff4a4a;
             color: white;
@@ -148,77 +123,47 @@
             font-size: 0.75rem;
             font-weight: bold;
         }
-
-        .tag {
-            background-color: #1f2942;
-            color: var(--green);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin: 2px;
-            border: 1px solid var(--border);
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-
+        
         <header>
-            <h1>[ MARCOS | CYBERSECURITY SPECIALIST ]</h1>
-            <p class="subtitle">IT Operations &amp; Incident Management</p>
+            <h1>[ JUNIOR CYBERSECURITY PORTFOLIO ]</h1>
+            <p class="subtitle">Threat Intelligence API Integration & OSINT Automation</p>
         </header>
 
+        <!-- BIOGRAPHY & LINKEDIN -->
         <div class="bio-card">
-            <strong>👤 Professional Profile:</strong> Technical professional with a solid foundation in offensive and defensive security, specializing in cybersecurity following an intensive advanced technical training program at IT Academy - Cibernàrium (Barcelona Activa). Expert in Linux/Kali Linux environments (Bash scripting), Cisco network configuration (TCP/IP), and incident life-cycle management. Over 10 years of experience in international environments, recognized for analytical skills in resolving critical incidents and making risk-based decisions.
-            <br>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="linkedin-btn">Connect on LinkedIn ↗</a>
+            <strong>👤 Technical Profile:</strong> Hello! I am a Junior Cybersecurity student. This static portfolio showcases my ability to build client-side scripts that interact with global threat feeds and automate intelligence gathering without needing backend servers or risk exposing sensitive database assets.
+            <br><br>
+            <!-- REEMPLAZA ESTE ENLACE CON EL TUYO REAL DE LINKEDIN -->
+            <a href="https://linkedin.com" target="_blank" class="linkedin-btn">Connect on LinkedIn ↗</a>
         </div>
 
-        <div class="grid-main">
-
+        <div class="grid">
+            
+            <!-- OSINT PANEL -->
             <div class="panel">
-                <h2>📜 Certifications &amp; Specialized Training</h2>
-                <ul>
-                    <li><strong>CyberOps Cybersecurity Specialization</strong> | Cisco Networking Academy (CCNA Cybersecurity)</li>
-                    <li><strong>CCST – IT Support | Networking | Cybersecurity</strong> | Cisco Networking Academy</li>
-                    <li><strong>Network Defense</strong> | Ethical Hacking &amp; Pentesting Badge</li>
-                    <li><strong>Python Backend Development</strong> | Python Institute's PCAP</li>
-                    <li><strong>High-Performance Intensive Reskilling Programme</strong> | IT Academy – Cibernàrium (Barcelona Activa)</li>
-                </ul>
-            </div>
-
-            <div class="panel">
-                <h2>📁 Featured Technical Labs</h2>
-                <p style="color: var(--gray); font-size: 0.85rem; margin-top: 0;">Practical labs on Linux process analysis, Threat Hunting, Cisco networking, and incident management in SOC environments:</p>
-                <ul>
-                    <li><strong>LAB-1:</strong> Real-time Process Analysis and Socket Auditing on Linux.</li>
-                    <li><strong>LAB-2:</strong> Deploying an Nginx Web Server and Analysing Audit Logs (Baseline).</li>
-                </ul>
-                <div style="margin-top: 15px;">
-                    <span class="tag">Linux/Kali</span> <span class="tag">Bash</span> <span class="tag">TCP/IP</span> <span class="tag">Nginx</span> <span class="tag">SOC</span>
-                </div>
-            </div>
-
-            <div class="panel">
-                <h2>🔎 Live OSINT Module: Google Dorks</h2>
-                <p style="color: var(--gray); font-size: 0.8rem;">Passive reconnaissance automation. Enter a target domain to generate advanced dork queries.</p>
-
-                <input type="text" id="targetDomain" placeholder="example: targetcompany.com" autocomplete="off" spellcheck="false">
-                <button type="button" id="osintBtn">Launch Passive Scan</button>
-
+                <h2>🔎 OSINT Module: Google Dorks</h2>
+                <p style="color: var(--gray); font-size: 0.8rem;">Enter a target domain to generate advanced dork parameters for passive reconnaissance.</p>
+                
+                <input type="text" id="targetDomain" placeholder="example: targetcompany.com">
+                <button onclick="runOSINT()">Launch Passive Scan</button>
+                
                 <ul id="osintResults" class="results-list">
-                    <li style="color: var(--gray); font-size: 0.8rem;">Enter a domain above to test...</li>
+                    <li style="color: var(--gray); font-size: 0.8rem;">Enter a domain to see the automation...</li>
                 </ul>
             </div>
 
+            <!-- LIVE THREAT PANEL -->
             <div class="panel">
-                <h2>⚠️ Real-Time Threat Feed (CVEs)</h2>
-                <p style="color: var(--gray); font-size: 0.8rem;">External API integration. Latest global vulnerabilities fetched live from CIRCL CVE feed.</p>
-
+                <h2>⚠️ Real-Time Global Threats (CVEs)</h2>
+                <p style="color: var(--gray); font-size: 0.8rem;">Latest critical vulnerabilities disclosed worldwide, fetched live from an open intelligence feed.</p>
+                
                 <ul id="cveResults" class="results-list">
-                    <li style="color: var(--gray); font-size: 0.8rem;">Fetching threat data...</li>
+                    <li style="color: var(--gray); font-size: 0.8rem;">Fetching threat feeds...</li>
                 </ul>
             </div>
 
@@ -228,112 +173,74 @@
 
     <script>
         // --- OSINT ENGINE ---
-        // Validación: solo aceptamos dominios con formato razonable
-        const DOMAIN_REGEX = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        function escapeHtml(str) {
-            return str.replace(/[&<>"']/g, s => ({
-                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-            }[s]));
-        }
-
         function runOSINT() {
-            const input = document.getElementById('targetDomain');
-            const domain = input.value.trim().toLowerCase();
+            const domain = document.getElementById('targetDomain').value.trim();
             const resultsContainer = document.getElementById('osintResults');
             resultsContainer.innerHTML = '';
 
-            if (!DOMAIN_REGEX.test(domain)) {
-                resultsContainer.innerHTML = '<li style="color:#ff4a4a; font-size:0.8rem;">Invalid domain. Example: company.com</li>';
+            if (!domain) {
+                alert('Please enter a valid domain (e.g., company.com)');
                 return;
             }
 
             const dorks = [
-                { name: "Exposed PDF Files",          query: `site:${domain} filetype:pdf` },
-                { name: "Admin/Login Panels",         query: `site:${domain} inurl:admin OR inurl:login` },
-                { name: "Exposed Database Backups",   query: `site:${domain} filetype:sql OR filetype:bak` }
+                { name: "Exposed PDF Files", query: `site:${domain} filetype:pdf` },
+                { name: "Admin/Login Panels", query: `site:${domain} inurl:admin OR inurl:login` },
+                { name: "Exposed Database Backups", query: `site:${domain} filetype:sql OR filetype:bak` }
             ];
 
             dorks.forEach(dork => {
                 const li = document.createElement('li');
                 li.className = 'result-item';
-
-                const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(dork.query)}`;
-
-                const span = document.createElement('span');
-                span.textContent = dork.name;
-
-                const a = document.createElement('a');
-                a.href = googleUrl;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-                a.textContent = 'Test ↗';
-
-                li.appendChild(span);
-                li.appendChild(a);
+                const googleUrl = `https://google.com{encodeURIComponent(dork.query)}`;
+                
+                li.innerHTML = `
+                    <span>${dork.name}</span>
+                    <a href="${googleUrl}" target="_blank">Test ↗</a>
+                `;
                 resultsContainer.appendChild(li);
             });
         }
 
-        document.getElementById('osintBtn').addEventListener('click', runOSINT);
-        document.getElementById('targetDomain').addEventListener('keydown', e => {
-            if (e.key === 'Enter') runOSINT();
-        });
+        // --- LIVE THREAT FEED API ---
+        window.onload = function() {
+            fetchLiveThreats();
+        };
 
-        // --- LIVE THREAT FEED (CIRCL CVE API) ---
         function fetchLiveThreats() {
             const container = document.getElementById('cveResults');
-
-            fetch('https://cve.circl.lu/api/last')
+            
+            fetch('https://circl.lu')
                 .then(response => {
-                    if (!response.ok) throw new Error('API connection issue');
+                    if (!response.ok) throw new Error('API network response issue');
                     return response.json();
                 })
                 .then(data => {
                     container.innerHTML = '';
-                    const topFour = data.slice(0, 4);
+                    const topFive = data.slice(0, 5);
 
-                    topFour.forEach(cve => {
-                        const summary = (cve.summary || 'No summary available').trim();
-                        const shortSummary = summary.length > 80
-                            ? summary.substring(0, 80) + '...'
-                            : summary;
-
+                    topFive.forEach(cve => {
                         const li = document.createElement('li');
                         li.className = 'result-item';
+                        const shortSummary = cve.summary.length > 90 
+                            ? cve.summary.substring(0, 90) + '...' 
+                            : cve.summary;
 
-                        const wrapper = document.createElement('div');
-
-                        const badge = document.createElement('span');
-                        badge.className = 'cve-badge';
-                        badge.textContent = cve.id;
-
-                        const p = document.createElement('p');
-                        p.style.cssText = 'margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;';
-                        p.textContent = shortSummary;
-
-                        wrapper.appendChild(badge);
-                        wrapper.appendChild(p);
-
-                        const a = document.createElement('a');
-                        a.href = `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(cve.id)}`;
-                        a.target = '_blank';
-                        a.rel = 'noopener noreferrer';
-                        a.textContent = 'View ↗';
-
-                        li.appendChild(wrapper);
-                        li.appendChild(a);
+                        li.innerHTML = `
+                            <div>
+                                <span class="cve-badge">${cve.id}</span>
+                                <p style="margin: 5px 0 0 0; color: #8a99ad; font-size: 0.8rem;">${shortSummary}</p>
+                            </div>
+                            <a href="https://nist.gov{cve.id}" target="_blank" style="margin-left: 10px;">View ↗</a>
+                        `;
                         container.appendChild(li);
                     });
                 })
                 .catch(err => {
                     console.error(err);
-                    container.innerHTML = '<li style="color:#ff4a4a; font-size:0.8rem;">⚠️ Threat intelligence feed currently offline.</li>';
+                    container.innerHTML = '<li style="color: #ff4a4a; font-size: 0.8rem;">⚠️ Threat intelligence feed unavailable.</li>';
                 });
         }
-
-        window.addEventListener('DOMContentLoaded', fetchLiveThreats);
     </script>
-
 </body>
 </html>
